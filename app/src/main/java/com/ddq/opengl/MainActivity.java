@@ -1,5 +1,6 @@
 package com.ddq.opengl;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         return self;
     }
 
-    public native void init();
+    public native void init(AssetManager am);
     public native void onViewPortChange(int width,int height);
     public native void drawFrame();
 }

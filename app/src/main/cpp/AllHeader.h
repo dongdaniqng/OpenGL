@@ -14,6 +14,11 @@
 
 #include <android/log.h>
 
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
+
+#include <android/native_activity.h>
+
 #define LOG_TAG "NATIVE_DDQ:"
 
 
