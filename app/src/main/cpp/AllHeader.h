@@ -17,7 +17,9 @@
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 
-#include <android/native_activity.h>
+#include <time.h>
+
+#include <string>
 
 #define LOG_TAG "NATIVE_DDQ:"
 

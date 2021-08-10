@@ -8,3 +8,5 @@
 #include "AllHeader.h"
 
 char * loadFileContent(char * path, int & fileSize);
+
+float getFrameTime();

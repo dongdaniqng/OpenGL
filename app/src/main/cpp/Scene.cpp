@@ -29,6 +29,7 @@ Java_com_ddq_opengl_MainActivity_init(JNIEnv *env,
     __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s\n", "init");
     glClearColor(0.6f, 0.1f, 0.1f, 1.0f);
     assetManager = AAssetManager_fromJava(env, am);
+
     int fileSize = 0;
     char *content = loadFileContent("1/test.txt",fileSize);
     if (content != nullptr){
@@ -47,6 +48,6 @@ Java_com_ddq_opengl_MainActivity_onViewPortChange(JNIEnv *env,
 extern "C" JNICALL
 void Java_com_ddq_opengl_MainActivity_drawFrame(JNIEnv *env,
                                                 jobject) {
-    //__android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s\n", "drawFrame");
+    __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s%f\n", "drawFrame:",getFrameTime());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
