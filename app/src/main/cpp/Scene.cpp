@@ -31,11 +31,35 @@ Java_com_ddq_opengl_MainActivity_init(JNIEnv *env,
     assetManager = AAssetManager_fromJava(env, am);
 
     int fileSize = 0;
-    char *content = loadFileContent("1/test.txt",fileSize);
-    if (content != nullptr){
+    char *content = loadFileContent("1/test.txt", fileSize);
+    if (content != nullptr) {
         __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s\n", content);
         delete content;
     }
+
+    Vertex vertexs[3]; //cpu -> gpu
+    vertexs[0].aPosition[0] = -0.5f;
+    vertexs[0].aPosition[1] = -0.5f;
+    vertexs[0].aPosition[2] = -2.0f;
+    vertexs[0].aPosition[3] = 1.0f;
+
+    vertexs[1].aPosition[0] = 0.5f;
+    vertexs[1].aPosition[1] = -0.5f;
+    vertexs[1].aPosition[2] = -2.0f;
+    vertexs[1].aPosition[3] = 1.0f;
+
+    vertexs[2].aPosition[0] = 0.0f;
+    vertexs[2].aPosition[1] = 0.5f;
+    vertexs[2].aPosition[2] = -2.0f;
+    vertexs[2].aPosition[3] = 1.0f;
+
+    GLuint vbo;
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 3, vertexs, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 3, nullptr, GL_STATIC_DRAW);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vertex) * 3, vertexs);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 extern "C" void JNICALL
@@ -48,6 +72,6 @@ Java_com_ddq_opengl_MainActivity_onViewPortChange(JNIEnv *env,
 extern "C" JNICALL
 void Java_com_ddq_opengl_MainActivity_drawFrame(JNIEnv *env,
                                                 jobject) {
-    __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s%f\n", "drawFrame:",getFrameTime());
+    __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s%f\n", "drawFrame:", getFrameTime());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 }
