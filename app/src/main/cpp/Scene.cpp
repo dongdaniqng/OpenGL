@@ -4,6 +4,7 @@
 
 #include "Scene.h"
 #include "Utils.h"
+using namespace glm;
 
 static AAssetManager *assetManager = nullptr;
 
@@ -13,6 +14,10 @@ GLint pLocation;
 GLint mLocation;
 GLint vLocation;
 GLint position;
+
+mat4 mMatrix;
+mat4 vMatrix;
+mat4 pMatrix;
 
 extern "C" void JNICALL
 Java_com_ddq_opengl_MainActivity_init(JNIEnv *env,
@@ -65,6 +70,12 @@ Java_com_ddq_opengl_MainActivity_onViewPortChange(JNIEnv *env,
                                                   jobject, jint width, jint height) {
     __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "%s%dx%d\n", "nViewPortChange", width, height);
     glViewport(0, 0, width, height);
+    vMatrix = lookAt(
+            vec3(0f,0f,0f),
+            vec3(0f,0f,-1f),
+            vec3(0f,1f,0f)
+            );
+    pMatrix = perspective(45f,width*1.0f/height,0.1f,1000f);
 }
 
 extern "C" JNICALL
