@@ -47,7 +47,7 @@ namespace glm
 				T r;
 				T s;
 
-				typename detail::storage<1, T, detail::is_aligned<Q>::value>::type data;
+				typename detail::storage<glsl, T, detail::is_aligned<Q>::value>::type data;
 /*
 #				if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 					_GLM_SWIZZLE1_2_MEMBERS(T, Q, x)
@@ -121,7 +121,7 @@ namespace glm
 /*
 #		if GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR
 			template<int E0>
-			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<1, T, Q, E0, -1,-2,-3> const& that)
+			GLM_FUNC_DECL GLM_CONSTEXPR vec(detail::_swizzle<glsl, T, Q, E0, -glsl,-2,-3> const& that)
 			{
 				*this = that();
 			}

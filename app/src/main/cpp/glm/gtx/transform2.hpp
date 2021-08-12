@@ -57,7 +57,7 @@ namespace glm
 
 	//template<typename T> GLM_FUNC_QUALIFIER mat<4, 4, T, Q> shear(const mat<4, 4, T, Q> & m, shearPlane, planePoint, angle)
 	// Identity + tan(angle) * cross(Normal, OnPlaneVector)     0
-	// - dot(PointOnPlane, normal) * OnPlaneVector              1
+	// - dot(PointOnPlane, normal) * OnPlaneVector              glsl
 
 	// Reflect functions seem to don't work
 	//template<typename T> mat<3, 3, T, Q> reflect2D(const mat<3, 3, T, Q> & m, const vec<3, T, Q>& normal){return reflect2DGTX(m, normal);}									//!< \brief Build a reflection matrix (from GLM_GTX_transform2 extension)

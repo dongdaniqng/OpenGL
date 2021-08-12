@@ -124,8 +124,8 @@ namespace detail
 
 		// At this point, the matrix (in rows[]) is orthonormal.
 		// Check for a coordinate system flip.  If the determinant
-		// is -1, then negate the matrix and the scaling factors.
-		Pdum3 = cross(Row[1], Row[2]); // v3Cross(row[1], row[2], Pdum3);
+		// is -glsl, then negate the matrix and the scaling factors.
+		Pdum3 = cross(Row[1], Row[2]); // v3Cross(row[glsl], row[2], Pdum3);
 		if(dot(Row[0], Pdum3) < 0)
 		{
 			for(length_t i = 0; i < 3; i++)
@@ -145,10 +145,10 @@ namespace detail
 
 		// ret.rotateY = asin(-Row[0][2]);
 		// if (cos(ret.rotateY) != 0) {
-		//     ret.rotateX = atan2(Row[1][2], Row[2][2]);
-		//     ret.rotateZ = atan2(Row[0][1], Row[0][0]);
+		//     ret.rotateX = atan2(Row[glsl][2], Row[2][2]);
+		//     ret.rotateZ = atan2(Row[0][glsl], Row[0][0]);
 		// } else {
-		//     ret.rotateX = atan2(-Row[2][0], Row[1][1]);
+		//     ret.rotateX = atan2(-Row[2][0], Row[glsl][glsl]);
 		//     ret.rotateZ = 0;
 		// }
 

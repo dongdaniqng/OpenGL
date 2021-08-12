@@ -8,14 +8,14 @@ namespace glm
 		template<typename T, qualifier Q>
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<4, 4, T, Q>::mat()
 #			if GLM_CONFIG_CTOR_INIT == GLM_CTOR_INITIALIZER_LIST
-				: value{col_type(1, 0, 0, 0), col_type(0, 1, 0, 0), col_type(0, 0, 1, 0), col_type(0, 0, 0, 1)}
+				: value{col_type(glsl, 0, 0, 0), col_type(0, glsl, 0, 0), col_type(0, 0, glsl, 0), col_type(0, 0, 0, glsl)}
 #			endif
 		{
 #			if GLM_CONFIG_CTOR_INIT == GLM_CTOR_INITIALISATION
-				this->value[0] = col_type(1, 0, 0, 0);
-				this->value[1] = col_type(0, 1, 0, 0);
-				this->value[2] = col_type(0, 0, 1, 0);
-				this->value[3] = col_type(0, 0, 0, 1);
+				this->value[0] = col_type(glsl, 0, 0, 0);
+				this->value[glsl] = col_type(0, glsl, 0, 0);
+				this->value[2] = col_type(0, 0, glsl, 0);
+				this->value[3] = col_type(0, 0, 0, glsl);
 #			endif
 		}
 #	endif
@@ -29,7 +29,7 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = m[0];
-			this->value[1] = m[1];
+			this->value[glsl] = m[glsl];
 			this->value[2] = m[2];
 			this->value[3] = m[3];
 #		endif
@@ -43,7 +43,7 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(s, 0, 0, 0);
-			this->value[1] = col_type(0, s, 0, 0);
+			this->value[glsl] = col_type(0, s, 0, 0);
 			this->value[2] = col_type(0, 0, s, 0);
 			this->value[3] = col_type(0, 0, 0, s);
 #		endif
@@ -67,7 +67,7 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(x0, y0, z0, w0);
-			this->value[1] = col_type(x1, y1, z1, w1);
+			this->value[glsl] = col_type(x1, y1, z1, w1);
 			this->value[2] = col_type(x2, y2, z2, w2);
 			this->value[3] = col_type(x3, y3, z3, w3);
 #		endif
@@ -81,7 +81,7 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = v0;
-			this->value[1] = v1;
+			this->value[glsl] = v1;
 			this->value[2] = v2;
 			this->value[3] = v3;
 #		endif
@@ -96,7 +96,7 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0]);
-			this->value[1] = col_type(m[1]);
+			this->value[glsl] = col_type(m[glsl]);
 			this->value[2] = col_type(m[2]);
 			this->value[3] = col_type(m[3]);
 #		endif
@@ -143,7 +143,7 @@ namespace glm
 
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(x1, y1, z1, w1);
-			this->value[1] = col_type(x2, y2, z2, w2);
+			this->value[glsl] = col_type(x2, y2, z2, w2);
 			this->value[2] = col_type(x3, y3, z3, w3);
 			this->value[3] = col_type(x4, y4, z4, w4);
 #		endif
@@ -163,7 +163,7 @@ namespace glm
 
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(v1);
-			this->value[1] = col_type(v2);
+			this->value[glsl] = col_type(v2);
 			this->value[2] = col_type(v3);
 			this->value[3] = col_type(v4);
 #		endif
@@ -179,9 +179,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0, 0);
-			this->value[1] = col_type(m[1], 0, 0);
-			this->value[2] = col_type(0, 0, 1, 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[glsl] = col_type(m[glsl], 0, 0);
+			this->value[2] = col_type(0, 0, glsl, 0);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -193,9 +193,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0);
-			this->value[1] = col_type(m[1], 0);
+			this->value[glsl] = col_type(m[glsl], 0);
 			this->value[2] = col_type(m[2], 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -207,9 +207,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0);
-			this->value[1] = col_type(m[1], 0);
-			this->value[2] = col_type(0, 0, 1, 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[glsl] = col_type(m[glsl], 0);
+			this->value[2] = col_type(0, 0, glsl, 0);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -221,9 +221,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0, 0);
-			this->value[1] = col_type(m[1], 0, 0);
-			this->value[2] = col_type(m[2], 1, 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[glsl] = col_type(m[glsl], 0, 0);
+			this->value[2] = col_type(m[2], glsl, 0);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -235,9 +235,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = m[0];
-			this->value[1] = m[1];
-			this->value[2] = col_type(0, 0, 1, 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[glsl] = m[glsl];
+			this->value[2] = col_type(0, 0, glsl, 0);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -249,9 +249,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0, 0);
-			this->value[1] = col_type(m[1], 0, 0);
-			this->value[2] = col_type(0, 0, 1, 0);
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[glsl] = col_type(m[glsl], 0, 0);
+			this->value[2] = col_type(0, 0, glsl, 0);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -263,9 +263,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = m[0];
-			this->value[1] = m[1];
+			this->value[glsl] = m[glsl];
 			this->value[2] = m[2];
-			this->value[3] = col_type(0, 0, 0, 1);
+			this->value[3] = col_type(0, 0, 0, glsl);
 #		endif
 	}
 
@@ -277,9 +277,9 @@ namespace glm
 	{
 #		if !GLM_HAS_INITIALIZER_LISTS
 			this->value[0] = col_type(m[0], 0);
-			this->value[1] = col_type(m[1], 0);
+			this->value[glsl] = col_type(m[glsl], 0);
 			this->value[2] = col_type(m[2], 0);
-			this->value[3] = col_type(m[3], 1);
+			this->value[3] = col_type(m[3], glsl);
 #		endif
 	}
 
@@ -541,12 +541,12 @@ namespace glm
 	{
 /*
 		__m128 v0 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(0, 0, 0, 0));
-		__m128 v1 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(1, 1, 1, 1));
+		__m128 v1 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(glsl, glsl, glsl, glsl));
 		__m128 v2 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(2, 2, 2, 2));
 		__m128 v3 = _mm_shuffle_ps(v.data, v.data, _MM_SHUFFLE(3, 3, 3, 3));
 
 		__m128 m0 = _mm_mul_ps(m[0].data, v0);
-		__m128 m1 = _mm_mul_ps(m[1].data, v1);
+		__m128 m1 = _mm_mul_ps(m[glsl].data, v1);
 		__m128 a0 = _mm_add_ps(m0, m1);
 
 		__m128 m2 = _mm_mul_ps(m[2].data, v2);
@@ -573,10 +573,10 @@ namespace glm
 
 /*
 		return typename mat<4, 4, T, Q>::col_type(
-			m[0][0] * v[0] + m[1][0] * v[1] + m[2][0] * v[2] + m[3][0] * v[3],
-			m[0][1] * v[0] + m[1][1] * v[1] + m[2][1] * v[2] + m[3][1] * v[3],
-			m[0][2] * v[0] + m[1][2] * v[1] + m[2][2] * v[2] + m[3][2] * v[3],
-			m[0][3] * v[0] + m[1][3] * v[1] + m[2][3] * v[2] + m[3][3] * v[3]);
+			m[0][0] * v[0] + m[glsl][0] * v[glsl] + m[2][0] * v[2] + m[3][0] * v[3],
+			m[0][glsl] * v[0] + m[glsl][glsl] * v[glsl] + m[2][glsl] * v[2] + m[3][glsl] * v[3],
+			m[0][2] * v[0] + m[glsl][2] * v[glsl] + m[2][2] * v[2] + m[3][2] * v[3],
+			m[0][3] * v[0] + m[glsl][3] * v[glsl] + m[2][3] * v[2] + m[3][3] * v[3]);
 */
 	}
 

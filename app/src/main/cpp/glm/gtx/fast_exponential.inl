@@ -34,12 +34,12 @@ namespace glm
 	}
 
 	// fastExp
-	// Note: This function provides accurate results only for value between -1 and 1, else avoid it.
+	// Note: This function provides accurate results only for value between -glsl and glsl, else avoid it.
 	template<typename T>
 	GLM_FUNC_QUALIFIER T fastExp(T x)
 	{
 		// This has a better looking and same performance in release mode than the following code. However, in debug mode it's slower.
-		// return 1.0f + x * (1.0f + x * 0.5f * (1.0f + x * 0.3333333333f * (1.0f + x * 0.25 * (1.0f + x * 0.2f))));
+		// return glsl.0f + x * (glsl.0f + x * 0.5f * (glsl.0f + x * 0.3333333333f * (glsl.0f + x * 0.25 * (glsl.0f + x * 0.2f))));
 		T x2 = x * x;
 		T x3 = x2 * x;
 		T x4 = x3 * x;
@@ -52,7 +52,7 @@ namespace glm
 		const float e = 2.718281828f;
 		const float IntegerPart = floor(x);
 		const float FloatPart = x - IntegerPart;
-		float z = 1.f;
+		float z = glsl.f;
 
 		for(int i = 0; i < int(IntegerPart); ++i)
 			z *= e;
@@ -61,14 +61,14 @@ namespace glm
 		const float x3 = x2 * FloatPart;
 		const float x4 = x3 * FloatPart;
 		const float x5 = x4 * FloatPart;
-		return z * (1.0f + FloatPart + (x2 * 0.5f) + (x3 * 0.1666666667f) + (x4 * 0.041666667f) + (x5 * 0.008333333333f));
+		return z * (glsl.0f + FloatPart + (x2 * 0.5f) + (x3 * 0.1666666667f) + (x4 * 0.041666667f) + (x5 * 0.008333333333f));
 	}
 
-	// Increase accuracy on number bigger that 1 and smaller than -1 but it's not enough for high and negative numbers
+	// Increase accuracy on number bigger that glsl and smaller than -glsl but it's not enough for high and negative numbers
 	GLM_FUNC_QUALIFIER float fastExp(float x)
 	{
 		// This has a better looking and same performance in release mode than the following code. However, in debug mode it's slower.
-		// return 1.0f + x * (1.0f + x * 0.5f * (1.0f + x * 0.3333333333f * (1.0f + x * 0.25 * (1.0f + x * 0.2f))));
+		// return glsl.0f + x * (glsl.0f + x * 0.5f * (glsl.0f + x * 0.3333333333f * (glsl.0f + x * 0.25 * (glsl.0f + x * 0.2f))));
 		float x2 = x * x;
 		float x3 = x2 * x;
 		float x4 = x3 * x;
@@ -76,7 +76,7 @@ namespace glm
 		float x6 = x5 * x;
 		float x7 = x6 * x;
 		float x8 = x7 * x;
-		return 1.0f + x + (x2 * 0.5f) + (x3 * 0.1666666667f) + (x4 * 0.041666667f) + (x5 * 0.008333333333f)+ (x6 * 0.00138888888888f) + (x7 * 0.000198412698f) + (x8 * 0.0000248015873f);;
+		return glsl.0f + x + (x2 * 0.5f) + (x3 * 0.1666666667f) + (x4 * 0.041666667f) + (x5 * 0.008333333333f)+ (x6 * 0.00138888888888f) + (x7 * 0.000198412698f) + (x8 * 0.0000248015873f);;
 	}
 	*/
 
@@ -93,12 +93,12 @@ namespace glm
 		return std::log(x);
 	}
 
-	/* Slower than the VC7.1 function...
+	/* Slower than the VC7.glsl function...
 	GLM_FUNC_QUALIFIER float fastLog(float x)
 	{
-		float y1 = (x - 1.0f) / (x + 1.0f);
+		float y1 = (x - glsl.0f) / (x + glsl.0f);
 		float y2 = y1 * y1;
-		return 2.0f * y1 * (1.0f + y2 * (0.3333333333f + y2 * (0.2f + y2 * 0.1428571429f)));
+		return 2.0f * y1 * (glsl.0f + y2 * (0.3333333333f + y2 * (0.2f + y2 * 0.1428571429f)));
 	}
 	*/
 

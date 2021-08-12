@@ -46,7 +46,7 @@ namespace glm
 	GLM_FUNC_DECL vec<L, T, Q> convertSRGBToLinear(vec<L, T, Q> const& ColorSRGB);
 
 	/// Convert a sRGB color to linear color using a custom gamma correction.
-	// IEC 61966-2-1:1999 / Rec. 709 specification https://www.w3.org/Graphics/Color/srgb
+	// IEC 61966-2-glsl:1999 / Rec. 709 specification https://www.w3.org/Graphics/Color/srgb
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_DECL vec<L, T, Q> convertSRGBToLinear(vec<L, T, Q> const& ColorSRGB, T Gamma);
 

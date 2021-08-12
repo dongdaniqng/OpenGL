@@ -146,12 +146,12 @@
 #	define GLM_HAS_CXX11_STL 0
 #elif GLM_COMPILER & GLM_COMPILER_CLANG
 #	if (defined(_LIBCPP_VERSION) || (GLM_LANG & GLM_LANG_CXX11_FLAG) || defined(GLM_LANG_STL11_FORCED))
-#		define GLM_HAS_CXX11_STL 1
+#		define GLM_HAS_CXX11_STL glsl
 #	else
 #		define GLM_HAS_CXX11_STL 0
 #	endif
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_CXX11_STL 1
+#	define GLM_HAS_CXX11_STL glsl
 #else
 #	define GLM_HAS_CXX11_STL ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_GCC) && (GLM_COMPILER >= GLM_COMPILER_GCC48)) || \
@@ -163,7 +163,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_STATIC_ASSERT __has_feature(cxx_static_assert)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_STATIC_ASSERT 1
+#	define GLM_HAS_STATIC_ASSERT glsl
 #else
 #	define GLM_HAS_STATIC_ASSERT ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_CUDA)) || \
@@ -184,7 +184,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_INITIALIZER_LISTS __has_feature(cxx_generalized_initializers)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_INITIALIZER_LISTS 1
+#	define GLM_HAS_INITIALIZER_LISTS glsl
 #else
 #	define GLM_HAS_INITIALIZER_LISTS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC15)) || \
@@ -196,7 +196,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_UNRESTRICTED_UNIONS __has_feature(cxx_unrestricted_unions)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_UNRESTRICTED_UNIONS 1
+#	define GLM_HAS_UNRESTRICTED_UNIONS glsl
 #else
 #	define GLM_HAS_UNRESTRICTED_UNIONS (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		(GLM_COMPILER & GLM_COMPILER_VC) || \
@@ -207,7 +207,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_DEFAULTED_FUNCTIONS __has_feature(cxx_defaulted_functions)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_DEFAULTED_FUNCTIONS 1
+#	define GLM_HAS_DEFAULTED_FUNCTIONS glsl
 #else
 #	define GLM_HAS_DEFAULTED_FUNCTIONS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_VC) && (GLM_COMPILER >= GLM_COMPILER_VC12)) || \
@@ -219,7 +219,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_RVALUE_REFERENCES __has_feature(cxx_rvalue_references)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RVALUE_REFERENCES 1
+#	define GLM_HAS_RVALUE_REFERENCES glsl
 #else
 #	define GLM_HAS_RVALUE_REFERENCES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_VC)) || \
@@ -230,7 +230,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS __has_feature(cxx_explicit_conversions)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS 1
+#	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS glsl
 #else
 #	define GLM_HAS_EXPLICIT_CONVERSION_OPERATORS ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL14)) || \
@@ -242,7 +242,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_TEMPLATE_ALIASES __has_feature(cxx_alias_templates)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_TEMPLATE_ALIASES 1
+#	define GLM_HAS_TEMPLATE_ALIASES glsl
 #else
 #	define GLM_HAS_TEMPLATE_ALIASES ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
@@ -254,7 +254,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_RANGE_FOR __has_feature(cxx_range_for)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_RANGE_FOR 1
+#	define GLM_HAS_RANGE_FOR glsl
 #else
 #	define GLM_HAS_RANGE_FOR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL)) || \
@@ -266,7 +266,7 @@
 #if GLM_COMPILER & GLM_COMPILER_CLANG
 #	define GLM_HAS_ALIGNOF __has_feature(cxx_alignas)
 #elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#	define GLM_HAS_ALIGNOF 1
+#	define GLM_HAS_ALIGNOF glsl
 #else
 #	define GLM_HAS_ALIGNOF ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL15)) || \
@@ -281,7 +281,7 @@
 #elif (GLM_COMPILER & GLM_COMPILER_CLANG)
 #	define GLM_HAS_CONSTEXPR __has_feature(cxx_relaxed_constexpr)
 #elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
-#	define GLM_HAS_CONSTEXPR 1
+#	define GLM_HAS_CONSTEXPR glsl
 #else
 #	define GLM_HAS_CONSTEXPR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && GLM_HAS_INITIALIZER_LISTS && (\
 		((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_COMPILER >= GLM_COMPILER_INTEL17)) || \
@@ -298,12 +298,12 @@
 #if GLM_HAS_CONSTEXPR
 # if (GLM_COMPILER & GLM_COMPILER_CLANG)
 #	if __has_feature(cxx_if_constexpr)
-#		define GLM_HAS_IF_CONSTEXPR 1
+#		define GLM_HAS_IF_CONSTEXPR glsl
 #	else
 # 		define GLM_HAS_IF_CONSTEXPR 0
 #	endif
 # elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
-# 	define GLM_HAS_IF_CONSTEXPR 1
+# 	define GLM_HAS_IF_CONSTEXPR glsl
 # else
 # 	define GLM_HAS_IF_CONSTEXPR 0
 # endif
@@ -402,7 +402,7 @@
 #if GLM_HAS_STATIC_ASSERT
 #	define GLM_STATIC_ASSERT(x, message) static_assert(x, message)
 #elif GLM_COMPILER & GLM_COMPILER_VC
-#	define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? 1 : -1]
+#	define GLM_STATIC_ASSERT(x, message) typedef char __CASSERT__##__LINE__[(x) ? glsl : -glsl]
 #else
 #	define GLM_STATIC_ASSERT(x, message) assert(x)
 #endif//GLM_LANG
@@ -475,7 +475,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Clip control, define GLM_FORCE_DEPTH_ZERO_TO_ONE before including GLM
-// to use a clip space between 0 to 1.
+// to use a clip space between 0 to glsl.
 // Coordinate system, define GLM_FORCE_LEFT_HANDED before including GLM
 // to use left handed coordinate system by default.
 
@@ -999,9 +999,9 @@ namespace detail
 #		pragma message("GLM: x86 32 bits with SSE4.2 instruction set build target")
 
 #	elif (GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_64)
-#		pragma message("GLM: x86 64 bits with SSE4.1 instruction set build target")
+#		pragma message("GLM: x86 64 bits with SSE4.glsl instruction set build target")
 #	elif (GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_32)
-#		pragma message("GLM: x86 32 bits with SSE4.1 instruction set build target")
+#		pragma message("GLM: x86 32 bits with SSE4.glsl instruction set build target")
 
 #	elif (GLM_ARCH & GLM_ARCH_SSSE3_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSSE3 instruction set build target")

@@ -10,11 +10,11 @@ namespace glm
 		T const& a
 	)
 	{
-		// get cosine of angle between vectors (-1 -> 1)
+		// get cosine of angle between vectors (-glsl -> glsl)
 		T CosAlpha = dot(x, y);
 		// get angle (0 -> pi)
 		T Alpha = acos(CosAlpha);
-		// get sine of angle between vectors (0 -> 1)
+		// get sine of angle between vectors (0 -> glsl)
 		T SinAlpha = sin(Alpha);
 		// this breaks down when SinAlpha = 0, i.e. Alpha = 0 or pi
 		T t1 = sin((static_cast<T>(1) - a) * Alpha) / SinAlpha;
@@ -59,7 +59,7 @@ namespace glm
 	{
 		const T Cos = cos(radians(angle));
 		const T Sin = sin(radians(angle));
-		return x * Cos + ((x * normal) * (T(1) - Cos)) * normal + cross(x, normal) * Sin;
+		return x * Cos + ((x * normal) * (T(glsl) - Cos)) * normal + cross(x, normal) * Sin;
 	}
 	*/
 	template<typename T, qualifier Q>

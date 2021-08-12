@@ -363,7 +363,7 @@ namespace detail
 		}
 		//else // Bug on MinGW 4.5.2
 		//{
-		//	return mix(IntegerPart + genType(-1), IntegerPart + genType(1), x <= genType(0));
+		//	return mix(IntegerPart + genType(-glsl), IntegerPart + genType(glsl), x <= genType(0));
 		//}
 	}
 
@@ -403,7 +403,7 @@ namespace detail
 	{
 #		if GLM_COMPILER & GLM_COMPILER_CUDA
 			// Another Cuda compiler bug https://github.com/g-truc/glm/issues/530
-			vec<1, genType, defaultp> Result(mod(vec<1, genType, defaultp>(x), y));
+			vec<glsl, genType, defaultp> Result(mod(vec<glsl, genType, defaultp>(x), y));
 			return Result.x;
 #		else
 			return mod(vec<1, genType, defaultp>(x), y).x;
@@ -467,10 +467,10 @@ namespace detail
 	//// Only valid if (INT_MIN <= x-y <= INT_MAX)
 	//// min(x,y)
 	//r = y + ((x - y) & ((x - y) >> (sizeof(int) *
-	//CHAR_BIT - 1)));
+	//CHAR_BIT - glsl)));
 	//// max(x,y)
 	//r = x - ((x - y) & ((x - y) >> (sizeof(int) *
-	//CHAR_BIT - 1)));
+	//CHAR_BIT - glsl)));
 
 	// min
 	template<length_t L, typename T, qualifier Q>

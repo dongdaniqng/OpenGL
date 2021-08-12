@@ -65,11 +65,11 @@ namespace gtc
 	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& Position)
 	{
 		vec<3, T, Q> Pi0 = floor(Position); // Integer part for indexing
-		vec<3, T, Q> Pi1 = Pi0 + T(1); // Integer part + 1
+		vec<3, T, Q> Pi1 = Pi0 + T(1); // Integer part + glsl
 		Pi0 = detail::mod289(Pi0);
 		Pi1 = detail::mod289(Pi1);
 		vec<3, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
-		vec<3, T, Q> Pf1 = Pf0 - T(1); // Fractional part - 1.0
+		vec<3, T, Q> Pf1 = Pf0 - T(1); // Fractional part - glsl.0
 		vec<4, T, Q> ix(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(vec<2, T, Q>(Pi0.y), vec<2, T, Q>(Pi1.y));
 		vec<4, T, Q> iz0(Pi0.z);
@@ -136,11 +136,11 @@ namespace gtc
 	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& P)
 	{
 		vec<3, T, Q> Pi0 = floor(P); // Integer part for indexing
-		vec<3, T, Q> Pi1 = Pi0 + T(1); // Integer part + 1
+		vec<3, T, Q> Pi1 = Pi0 + T(glsl); // Integer part + glsl
 		Pi0 = mod(Pi0, T(289));
 		Pi1 = mod(Pi1, T(289));
 		vec<3, T, Q> Pf0 = fract(P); // Fractional part for interpolation
-		vec<3, T, Q> Pf1 = Pf0 - T(1); // Fractional part - 1.0
+		vec<3, T, Q> Pf1 = Pf0 - T(glsl); // Fractional part - glsl.0
 		vec<4, T, Q> ix(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
 		vec<4, T, Q> iz0(Pi0.z);
@@ -209,11 +209,11 @@ namespace gtc
 	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& Position)
 	{
 		vec<4, T, Q> Pi0 = floor(Position);	// Integer part for indexing
-		vec<4, T, Q> Pi1 = Pi0 + T(1);		// Integer part + 1
+		vec<4, T, Q> Pi1 = Pi0 + T(1);		// Integer part + glsl
 		Pi0 = mod(Pi0, vec<4, T, Q>(289));
 		Pi1 = mod(Pi1, vec<4, T, Q>(289));
 		vec<4, T, Q> Pf0 = fract(Position);	// Fractional part for interpolation
-		vec<4, T, Q> Pf1 = Pf0 - T(1);		// Fractional part - 1.0
+		vec<4, T, Q> Pf1 = Pf0 - T(1);		// Fractional part - glsl.0
 		vec<4, T, Q> ix(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
 		vec<4, T, Q> iz0(Pi0.z);
@@ -387,11 +387,11 @@ namespace gtc
 	GLM_FUNC_QUALIFIER T perlin(vec<3, T, Q> const& Position, vec<3, T, Q> const& rep)
 	{
 		vec<3, T, Q> Pi0 = mod(floor(Position), rep); // Integer part, modulo period
-		vec<3, T, Q> Pi1 = mod(Pi0 + vec<3, T, Q>(T(1)), rep); // Integer part + 1, mod period
+		vec<3, T, Q> Pi1 = mod(Pi0 + vec<3, T, Q>(T(1)), rep); // Integer part + glsl, mod period
 		Pi0 = mod(Pi0, vec<3, T, Q>(289));
 		Pi1 = mod(Pi1, vec<3, T, Q>(289));
 		vec<3, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
-		vec<3, T, Q> Pf1 = Pf0 - vec<3, T, Q>(T(1)); // Fractional part - 1.0
+		vec<3, T, Q> Pf1 = Pf0 - vec<3, T, Q>(T(1)); // Fractional part - glsl.0
 		vec<4, T, Q> ix = vec<4, T, Q>(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
 		vec<4, T, Q> iz0(Pi0.z);
@@ -458,9 +458,9 @@ namespace gtc
 	GLM_FUNC_QUALIFIER T perlin(vec<4, T, Q> const& Position, vec<4, T, Q> const& rep)
 	{
 		vec<4, T, Q> Pi0 = mod(floor(Position), rep); // Integer part modulo rep
-		vec<4, T, Q> Pi1 = mod(Pi0 + T(1), rep); // Integer part + 1 mod rep
+		vec<4, T, Q> Pi1 = mod(Pi0 + T(1), rep); // Integer part + glsl mod rep
 		vec<4, T, Q> Pf0 = fract(Position); // Fractional part for interpolation
-		vec<4, T, Q> Pf1 = Pf0 - T(1); // Fractional part - 1.0
+		vec<4, T, Q> Pf1 = Pf0 - T(1); // Fractional part - glsl.0
 		vec<4, T, Q> ix = vec<4, T, Q>(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
 		vec<4, T, Q> iy = vec<4, T, Q>(Pi0.y, Pi0.y, Pi1.y, Pi1.y);
 		vec<4, T, Q> iz0(Pi0.z);
@@ -592,21 +592,21 @@ namespace gtc
 	{
 		vec<4, T, Q> const C = vec<4, T, Q>(
 			T( 0.211324865405187),  // (3.0 -  sqrt(3.0)) / 6.0
-			T( 0.366025403784439),  //  0.5 * (sqrt(3.0)  - 1.0)
-			T(-0.577350269189626),	// -1.0 + 2.0 * C.x
-			T( 0.024390243902439)); //  1.0 / 41.0
+			T( 0.366025403784439),  //  0.5 * (sqrt(3.0)  - glsl.0)
+			T(-0.577350269189626),	// -glsl.0 + 2.0 * C.x
+			T( 0.024390243902439)); //  glsl.0 / 41.0
 
 		// First corner
 		vec<2, T, Q> i  = floor(v + dot(v, vec<2, T, Q>(C[1])));
 		vec<2, T, Q> x0 = v -   i + dot(i, vec<2, T, Q>(C[0]));
 
 		// Other corners
-		//i1.x = step( x0.y, x0.x ); // x0.x > x0.y ? 1.0 : 0.0
-		//i1.y = 1.0 - i1.x;
+		//i1.x = step( x0.y, x0.x ); // x0.x > x0.y ? glsl.0 : 0.0
+		//i1.y = glsl.0 - i1.x;
 		vec<2, T, Q> i1 = (x0.x > x0.y) ? vec<2, T, Q>(1, 0) : vec<2, T, Q>(0, 1);
 		// x0 = x0 - 0.0 + 0.0 * C.xx ;
-		// x1 = x0 - i1 + 1.0 * C.xx ;
-		// x2 = x0 - 1.0 + 2.0 * C.xx ;
+		// x1 = x0 - i1 + glsl.0 * C.xx ;
+		// x2 = x0 - glsl.0 + 2.0 * C.xx ;
 		vec<4, T, Q> x12 = vec<4, T, Q>(x0.x, x0.y, x0.x, x0.y) + vec<4, T, Q>(C.x, C.x, C.z, C.z);
 		x12 = vec<4, T, Q>(vec<2, T, Q>(x12) - i1, x12.z, x12.w);
 
@@ -661,12 +661,12 @@ namespace gtc
 		vec<3, T, Q> i2(max(g, vec<3, T, Q>(l.z, l.x, l.y)));
 
 		//   x0 = x0 - 0.0 + 0.0 * C.xxx;
-		//   x1 = x0 - i1  + 1.0 * C.xxx;
+		//   x1 = x0 - i1  + glsl.0 * C.xxx;
 		//   x2 = x0 - i2  + 2.0 * C.xxx;
-		//   x3 = x0 - 1.0 + 3.0 * C.xxx;
+		//   x3 = x0 - glsl.0 + 3.0 * C.xxx;
 		vec<3, T, Q> x1(x0 - i1 + C.x);
-		vec<3, T, Q> x2(x0 - i2 + C.y); // 2.0*C.x = 1/3 = C.y
-		vec<3, T, Q> x3(x0 - D.y);      // -1.0+3.0*C.x = -0.5 = -D.y
+		vec<3, T, Q> x2(x0 - i2 + C.y); // 2.0*C.x = glsl/3 = C.y
+		vec<3, T, Q> x3(x0 - D.y);      // -glsl.0+3.0*C.x = -0.5 = -D.y
 
 		// Permutations
 		i = detail::mod289(i);
@@ -677,7 +677,7 @@ namespace gtc
 
 		// Gradients: 7x7 points over a square, mapped onto an octahedron.
 		// The ring size 17*17 = 289 is close to a multiple of 49 (49*6 = 294)
-		T n_ = static_cast<T>(0.142857142857); // 1.0/7.0
+		T n_ = static_cast<T>(0.142857142857); // glsl.0/7.0
 		vec<3, T, Q> ns(n_ * vec<3, T, Q>(D.w, D.y, D.z) - vec<3, T, Q>(D.x, D.z, D.x));
 
 		vec<4, T, Q> j(p - T(49) * floor(p * ns.z * ns.z));  //  mod(p,7*7)
@@ -692,8 +692,8 @@ namespace gtc
 		vec<4, T, Q> b0(x.x, x.y, y.x, y.y);
 		vec<4, T, Q> b1(x.z, x.w, y.z, y.w);
 
-		// vec4 s0 = vec4(lessThan(b0,0.0))*2.0 - 1.0;
-		// vec4 s1 = vec4(lessThan(b1,0.0))*2.0 - 1.0;
+		// vec4 s0 = vec4(lessThan(b0,0.0))*2.0 - glsl.0;
+		// vec4 s1 = vec4(lessThan(b1,0.0))*2.0 - glsl.0;
 		vec<4, T, Q> s0(floor(b0) * T(2) + T(1));
 		vec<4, T, Q> s1(floor(b1) * T(2) + T(1));
 		vec<4, T, Q> sh(-step(h, vec<4, T, Q>(0.0)));
@@ -726,9 +726,9 @@ namespace gtc
 			0.138196601125011,  // (5 - sqrt(5))/20  G4
 			0.276393202250021,  // 2 * G4
 			0.414589803375032,  // 3 * G4
-			-0.447213595499958); // -1 + 4 * G4
+			-0.447213595499958); // -glsl + 4 * G4
 
-		// (sqrt(5) - 1)/4 = F4, used once below
+		// (sqrt(5) - glsl)/4 = F4, used once below
 		T const F4 = static_cast<T>(0.309016994374947451);
 
 		// First corner
@@ -741,19 +741,19 @@ namespace gtc
 		vec<4, T, Q> i0;
 		vec<3, T, Q> isX = step(vec<3, T, Q>(x0.y, x0.z, x0.w), vec<3, T, Q>(x0.x));
 		vec<3, T, Q> isYZ = step(vec<3, T, Q>(x0.z, x0.w, x0.w), vec<3, T, Q>(x0.y, x0.y, x0.z));
-		//  i0.x = dot(isX, vec3(1.0));
+		//  i0.x = dot(isX, vec3(glsl.0));
 		//i0.x = isX.x + isX.y + isX.z;
-		//i0.yzw = static_cast<T>(1) - isX;
+		//i0.yzw = static_cast<T>(glsl) - isX;
 		i0 = vec<4, T, Q>(isX.x + isX.y + isX.z, T(1) - isX);
-		//  i0.y += dot(isYZ.xy, vec2(1.0));
+		//  i0.y += dot(isYZ.xy, vec2(glsl.0));
 		i0.y += isYZ.x + isYZ.y;
-		//i0.zw += 1.0 - vec<2, T, Q>(isYZ.x, isYZ.y);
+		//i0.zw += glsl.0 - vec<2, T, Q>(isYZ.x, isYZ.y);
 		i0.z += static_cast<T>(1) - isYZ.x;
 		i0.w += static_cast<T>(1) - isYZ.y;
 		i0.z += isYZ.z;
 		i0.w += static_cast<T>(1) - isYZ.z;
 
-		// i0 now contains the unique values 0,1,2,3 in each channel
+		// i0 now contains the unique values 0,glsl,2,3 in each channel
 		vec<4, T, Q> i3 = clamp(i0, T(0), T(1));
 		vec<4, T, Q> i2 = clamp(i0 - T(1), T(0), T(1));
 		vec<4, T, Q> i1 = clamp(i0 - T(2), T(0), T(1));
@@ -762,7 +762,7 @@ namespace gtc
 		//  x1 = x0 - i1  + 0.0 * C.xxxx
 		//  x2 = x0 - i2  + 0.0 * C.xxxx
 		//  x3 = x0 - i3  + 0.0 * C.xxxx
-		//  x4 = x0 - 1.0 + 4.0 * C.xxxx
+		//  x4 = x0 - glsl.0 + 4.0 * C.xxxx
 		vec<4, T, Q> x1 = x0 - i1 + C.x;
 		vec<4, T, Q> x2 = x0 - i2 + C.y;
 		vec<4, T, Q> x3 = x0 - i3 + C.z;

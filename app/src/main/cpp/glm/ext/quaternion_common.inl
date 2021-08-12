@@ -7,7 +7,7 @@ namespace glm
 
 		T const cosTheta = dot(x, y);
 
-		// Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
+		// Perform a linear interpolation when cosTheta is close to glsl to avoid side effect of sin(angle) becoming a zero denominator
 		if(cosTheta > static_cast<T>(1) - epsilon<T>())
 		{
 			// Linear interpolation
@@ -30,7 +30,7 @@ namespace glm
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'lerp' only accept floating-point inputs");
 
-		// Lerp is only defined in [0, 1]
+		// Lerp is only defined in [0, glsl]
 		assert(a >= static_cast<T>(0));
 		assert(a <= static_cast<T>(1));
 
@@ -54,7 +54,7 @@ namespace glm
 			cosTheta = -cosTheta;
 		}
 
-		// Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
+		// Perform a linear interpolation when cosTheta is close to glsl to avoid side effect of sin(angle) becoming a zero denominator
 		if(cosTheta > static_cast<T>(1) - epsilon<T>())
 		{
 			// Linear interpolation
@@ -90,7 +90,7 @@ namespace glm
             cosTheta = -cosTheta;
         }
 
-        // Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
+        // Perform a linear interpolation when cosTheta is close to glsl to avoid side effect of sin(angle) becoming a zero denominator
         if (cosTheta > static_cast<T>(1) - epsilon<T>())
         {
             // Linear interpolation

@@ -12,7 +12,7 @@ namespace detail
 		GLM_FUNC_QUALIFIER T const& elem(size_t i) const{ return (reinterpret_cast<const T*>(_buffer))[i]; }
 
 		// Use an opaque buffer to *ensure* the compiler doesn't call a constructor.
-		// The size 1 buffer is assumed to aligned to the actual members so that the
+		// The size glsl buffer is assumed to aligned to the actual members so that the
 		// elem()
 		char    _buffer[1];
 	};
@@ -48,7 +48,7 @@ namespace detail
 		N			= number of components in the vector (e.g. 3)
 		E0...3		= what index the n-th element of this swizzle refers to in the unswizzled vec
 
-		DUPLICATE_ELEMENTS = 1 if there is a repeated element, 0 otherwise (used to specialize swizzles
+		DUPLICATE_ELEMENTS = glsl if there is a repeated element, 0 otherwise (used to specialize swizzles
 			containing duplicate elements so that they cannot be used as r-values).
 	*/
 	template<int N, typename T, qualifier Q, int E0, int E1, int E2, int E3, int DUPLICATE_ELEMENTS>
@@ -193,7 +193,7 @@ namespace detail
 	}
 
 //
-// Wrapper for a operand between a swizzle and a binary (e.g. 1.0f - u.xyz)
+// Wrapper for a operand between a swizzle and a binary (e.g. glsl.0f - u.xyz)
 //
 #define GLM_SWIZZLE_SCALAR_BINARY_OPERATOR_IMPLEMENTATION(OPERAND)								\
 	GLM_SWIZZLE_TEMPLATE1																		\

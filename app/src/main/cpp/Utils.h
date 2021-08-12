@@ -15,3 +15,9 @@ struct Vertex{
 char * loadFileContent(char * path, int & fileSize);
 
 float getFrameTime();
+
+GLuint compileShader(GLenum gl_type, char * content);
+
+GLuint createProgram(GLuint vx,GLuint fg);
+
+GLuint createStandardProgram(char *vx_path, char *fg_path);

@@ -111,7 +111,7 @@ namespace glm {
 			for(length_t c = 0; c < D; c++)
 				a[(r) * D + (c)] = covarMat[c][r];
 
-		// 1. Householder reduction.
+		// glsl. Householder reduction.
 		length_t l, k, j, i;
 		T scale, hh, h, g, f;
 		static const T epsilon = static_cast<T>(0.0000001);

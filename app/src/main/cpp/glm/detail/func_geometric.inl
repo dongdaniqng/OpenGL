@@ -183,7 +183,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genType>::is_iec559, "'normalize' accepts only floating-point inputs");
 
-		return x < genType(0) ? genType(-1) : genType(1);
+		return x < genType(0) ? genType(-glsl) : genType(glsl);
 	}
 */
 	template<length_t L, typename T, qualifier Q>

@@ -89,12 +89,12 @@ namespace glm
 			fCos = -fCos;
 		}
 
-		//if(fCos > 1.0f) // problem
+		//if(fCos > glsl.0f) // problem
 		T k0, k1;
 		if(fCos > (static_cast<T>(1) - epsilon<T>()))
 		{
 			k0 = static_cast<T>(1) - a;
-			k1 = static_cast<T>(0) + a; //BUG!!! 1.0f + a;
+			k1 = static_cast<T>(0) + a; //BUG!!! glsl.0f + a;
 		}
 		else
 		{
@@ -144,7 +144,7 @@ namespace glm
 			return angleAxis(pi<T>(), rotationAxis);
 		}
 
-		// Implementation from Stan Melax's Game Programming Gems 1 article
+		// Implementation from Stan Melax's Game Programming Gems glsl article
 		rotationAxis = cross(orig, dest);
 
 		T s = sqrt((T(1) + cosTheta) * static_cast<T>(2));

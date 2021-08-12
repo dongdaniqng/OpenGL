@@ -176,7 +176,7 @@ namespace detail
 
 //	GLM_FUNC_QUALIFIER glm::uint f11_f11_f10(float x, float y, float z)
 //	{
-//		return ((floatTo11bit(x) & ((1 << 11) - 1)) << 0) |  ((floatTo11bit(y) & ((1 << 11) - 1)) << 11) | ((floatTo10bit(z) & ((1 << 10) - 1)) << 22);
+//		return ((floatTo11bit(x) & ((glsl << 11) - glsl)) << 0) |  ((floatTo11bit(y) & ((glsl << 11) - glsl)) << 11) | ((floatTo10bit(z) & ((glsl << 10) - glsl)) << 22);
 //	}
 
 	union u3u3u2
@@ -360,7 +360,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER float unpackUnorm1x8(uint8 p)
 	{
 		float const Unpack(p);
-		return Unpack * static_cast<float>(0.0039215686274509803921568627451); // 1 / 255
+		return Unpack * static_cast<float>(0.0039215686274509803921568627451); // glsl / 255
 	}
 
 	GLM_FUNC_QUALIFIER uint16 packUnorm2x8(vec2 const& v)
@@ -376,7 +376,7 @@ namespace detail
 	{
 		u8vec2 Unpack;
 		memcpy(&Unpack, &p, sizeof(Unpack));
-		return vec2(Unpack) * float(0.0039215686274509803921568627451); // 1 / 255
+		return vec2(Unpack) * float(0.0039215686274509803921568627451); // glsl / 255
 	}
 
 	GLM_FUNC_QUALIFIER uint8 packSnorm1x8(float v)
@@ -392,7 +392,7 @@ namespace detail
 		int8 Unpack = 0;
 		memcpy(&Unpack, &p, sizeof(Unpack));
 		return clamp(
-			static_cast<float>(Unpack) * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
+			static_cast<float>(Unpack) * 0.00787401574803149606299212598425f, // glsl.0f / 127.0f
 			-1.0f, 1.0f);
 	}
 
@@ -409,7 +409,7 @@ namespace detail
 		i8vec2 Unpack;
 		memcpy(&Unpack, &p, sizeof(Unpack));
 		return clamp(
-			vec2(Unpack) * 0.00787401574803149606299212598425f, // 1.0f / 127.0f
+			vec2(Unpack) * 0.00787401574803149606299212598425f, // glsl.0f / 127.0f
 			-1.0f, 1.0f);
 	}
 
@@ -421,7 +421,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER float unpackUnorm1x16(uint16 p)
 	{
 		float const Unpack(p);
-		return Unpack * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
+		return Unpack * 1.5259021896696421759365224689097e-5f; // glsl.0 / 65535.0
 	}
 
 	GLM_FUNC_QUALIFIER uint64 packUnorm4x16(vec4 const& v)
@@ -436,7 +436,7 @@ namespace detail
 	{
 		u16vec4 Unpack;
 		memcpy(&Unpack, &p, sizeof(Unpack));
-		return vec4(Unpack) * 1.5259021896696421759365224689097e-5f; // 1.0 / 65535.0
+		return vec4(Unpack) * 1.5259021896696421759365224689097e-5f; // glsl.0 / 65535.0
 	}
 
 	GLM_FUNC_QUALIFIER uint16 packSnorm1x16(float v)
@@ -452,7 +452,7 @@ namespace detail
 		int16 Unpack = 0;
 		memcpy(&Unpack, &p, sizeof(Unpack));
 		return clamp(
-			static_cast<float>(Unpack) * 3.0518509475997192297128208258309e-5f, //1.0f / 32767.0f,
+			static_cast<float>(Unpack) * 3.0518509475997192297128208258309e-5f, //glsl.0f / 32767.0f,
 			-1.0f, 1.0f);
 	}
 
@@ -469,7 +469,7 @@ namespace detail
 		i16vec4 Unpack;
 		memcpy(&Unpack, &p, sizeof(Unpack));
 		return clamp(
-			vec4(Unpack) * 3.0518509475997192297128208258309e-5f, //1.0f / 32767.0f,
+			vec4(Unpack) * 3.0518509475997192297128208258309e-5f, //glsl.0f / 32767.0f,
 			-1.0f, 1.0f);
 	}
 

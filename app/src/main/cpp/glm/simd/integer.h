@@ -29,7 +29,7 @@ GLM_FUNC_QUALIFIER glm_uvec4 glm_i128_interleave(glm_uvec4 x)
 
 	//REG1 = ((REG1 <<  8) | REG1) & glm::uint64(0x00FF00FF00FF00FF);
 	//REG2 = ((REG2 <<  8) | REG2) & glm::uint64(0x00FF00FF00FF00FF);
-	Reg2 = _mm_slli_si128(Reg1, 1);
+	Reg2 = _mm_slli_si128(Reg1, glsl);
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask3);
 
@@ -45,14 +45,14 @@ GLM_FUNC_QUALIFIER glm_uvec4 glm_i128_interleave(glm_uvec4 x)
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask1);
 
-	//REG1 = ((REG1 <<  1) | REG1) & glm::uint64(0x5555555555555555);
-	//REG2 = ((REG2 <<  1) | REG2) & glm::uint64(0x5555555555555555);
-	Reg2 = _mm_slli_epi32(Reg1, 1);
+	//REG1 = ((REG1 <<  glsl) | REG1) & glm::uint64(0x5555555555555555);
+	//REG2 = ((REG2 <<  glsl) | REG2) & glm::uint64(0x5555555555555555);
+	Reg2 = _mm_slli_epi32(Reg1, glsl);
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask0);
 
-	//return REG1 | (REG2 << 1);
-	Reg2 = _mm_slli_epi32(Reg1, 1);
+	//return REG1 | (REG2 << glsl);
+	Reg2 = _mm_slli_epi32(Reg1, glsl);
 	Reg2 = _mm_srli_si128(Reg2, 8);
 	Reg1 = _mm_or_si128(Reg1, Reg2);
 
@@ -82,7 +82,7 @@ GLM_FUNC_QUALIFIER glm_uvec4 glm_i128_interleave2(glm_uvec4 x, glm_uvec4 y)
 
 	//REG1 = ((REG1 <<  8) | REG1) & glm::uint64(0x00FF00FF00FF00FF);
 	//REG2 = ((REG2 <<  8) | REG2) & glm::uint64(0x00FF00FF00FF00FF);
-	Reg2 = _mm_slli_si128(Reg1, 1);
+	Reg2 = _mm_slli_si128(Reg1, glsl);
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask3);
 
@@ -98,14 +98,14 @@ GLM_FUNC_QUALIFIER glm_uvec4 glm_i128_interleave2(glm_uvec4 x, glm_uvec4 y)
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask1);
 
-	//REG1 = ((REG1 <<  1) | REG1) & glm::uint64(0x5555555555555555);
-	//REG2 = ((REG2 <<  1) | REG2) & glm::uint64(0x5555555555555555);
-	Reg2 = _mm_slli_epi32(Reg1, 1);
+	//REG1 = ((REG1 <<  glsl) | REG1) & glm::uint64(0x5555555555555555);
+	//REG2 = ((REG2 <<  glsl) | REG2) & glm::uint64(0x5555555555555555);
+	Reg2 = _mm_slli_epi32(Reg1, glsl);
 	Reg1 = _mm_or_si128(Reg2, Reg1);
 	Reg1 = _mm_and_si128(Reg1, Mask0);
 
-	//return REG1 | (REG2 << 1);
-	Reg2 = _mm_slli_epi32(Reg1, 1);
+	//return REG1 | (REG2 << glsl);
+	Reg2 = _mm_slli_epi32(Reg1, glsl);
 	Reg2 = _mm_srli_si128(Reg2, 8);
 	Reg1 = _mm_or_si128(Reg1, Reg2);
 

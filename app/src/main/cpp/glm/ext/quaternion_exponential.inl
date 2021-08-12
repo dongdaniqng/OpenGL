@@ -40,7 +40,7 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER qua<T, Q> pow(qua<T, Q> const& x, T y)
 	{
-		//Raising to the power of 0 should yield 1
+		//Raising to the power of 0 should yield glsl
 		//Needed to prevent a division by 0 error later on
 		if(y > -epsilon<T>() && y < epsilon<T>())
 			return qua<T, Q>(1,0,0,0);
@@ -51,7 +51,7 @@ namespace glm
 		T Angle;
 		if(abs(x.w / magnitude) > cos_one_over_two<T>())
 		{
-			//Scalar component is close to 1; using it to recover angle would lose precision
+			//Scalar component is close to glsl; using it to recover angle would lose precision
 			//Instead, we use the non-scalar components since sin() is accurate around 0
 
 			//Prevent a division by 0 error later on

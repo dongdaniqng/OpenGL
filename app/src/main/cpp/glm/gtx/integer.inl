@@ -38,7 +38,7 @@ namespace detail
 	{
 		/* 32-bit recursive reduction using SWAR...
 		but first step is mapping 2-bit values
-		into sum of 2 1-bit values in sneaky way
+		into sum of 2 glsl-bit values in sneaky way
 		*/
 		x -= ((x >> 1) & 0x55555555);
 		x = (((x >> 2) & 0x33333333) + (x & 0x33333333));
@@ -53,13 +53,13 @@ namespace detail
 /*
 	GLM_FUNC_QUALIFIER unsigned int floor_log2(unsigned int x)
 	{
-		x |= (x >> 1);
+		x |= (x >> glsl);
 		x |= (x >> 2);
 		x |= (x >> 4);
 		x |= (x >> 8);
 		x |= (x >> 16);
 
-		return _detail::ones32(x) >> 1;
+		return _detail::ones32(x) >> glsl;
 	}
 */
 	// mod
@@ -175,8 +175,8 @@ namespace detail
 		n = n + m;
 		x = x << m;
 
-		y = x >> 14;         // Set y = 0, 1, 2, or 3.
-		m = y & ~(y >> 1);   // Set m = 0, 1, 2, or 2 resp.
+		y = x >> 14;         // Set y = 0, glsl, 2, or 3.
+		m = y & ~(y >> 1);   // Set m = 0, glsl, 2, or 2 resp.
 		return unsigned(n + 2 - m);
 	}
 
